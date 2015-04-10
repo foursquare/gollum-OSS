@@ -379,7 +379,7 @@ module Precious
       @versions = @wiki.latest_changes({:max_count => max_count})
       mustache :latest_changes
     end
-    
+
     post '/compare/*' do
       @file     = encodeURIComponent(params[:splat].first)
       @versions = params[:versions] || []
@@ -535,6 +535,12 @@ module Precious
     # author details are sourced from the session, to be populated by rack middleware ahead of us
     def commit_message
       msg               = (params[:message].nil? or params[:message].empty?) ? "[no message]" : params[:message]
+
+      unless (params[:auditor].nil? or params[:auditor].empty?)
+        auditor = params[:auditor]
+        msg += "\n\nAuditors: #{auditor}"
+      end
+
       commit_message    = { :message => msg }
       author_parameters = session['gollum.author']
       commit_message.merge! author_parameters unless author_parameters.nil?
