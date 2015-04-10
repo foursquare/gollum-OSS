@@ -91,6 +91,7 @@ Gem::Specification.new do |s|
     lib/gollum/public/gollum/javascript/gollum.placeholder.js
     lib/gollum/public/gollum/javascript/identicon_canvas.js
     lib/gollum/public/gollum/javascript/jquery-1.7.2.min.js
+    lib/gollum/public/gollum/javascript/jquery.ui-effects-only.js
     lib/gollum/public/gollum/javascript/jquery.color.js
     lib/gollum/public/gollum/javascript/mousetrap.min.js
     lib/gollum/public/gollum/livepreview/css/custom.css
