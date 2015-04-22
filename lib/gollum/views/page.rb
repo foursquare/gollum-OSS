@@ -14,7 +14,17 @@ module Precious
       end
 
       def page_header
-        title
+        parts = @page.url_path.split('/')
+        breadcrumb = [%{<a href="#{@base_url}/">Home</a>}]
+        link = "#{@base_url}/"
+        parts.slice(0, parts.length-1).each do |part|
+          link += part + '/'
+          breadcrumb << %{<a href="#{link}">#{part}</a>}
+        end
+
+        breadcrumb << parts.slice(-1)
+
+        breadcrumb.join(" / ")
       end
 
       def content
