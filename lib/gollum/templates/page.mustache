@@ -4,6 +4,23 @@ Mousetrap.bind(['e'], function( e ) {
   window.location = "/edit" + window.location.pathname;
   return false;
 });
+
+// Focus search box on '/'
+Mousetrap.bind(['/'], function( e ) {
+  e.preventDefault();
+  $('#search-query').focus();
+  return false;
+});
+
+// Unfocus search box if it's focused and we press ESC
+$(document).ready(function() {
+  $('#search-query').keyup(function(e) {
+    if (e.keyCode === 27) {
+      $(e.target).blur();
+      return false;
+    }
+  });
+});
 </script>
 <div id="wiki-wrapper" class="page">
 <div id="head">
